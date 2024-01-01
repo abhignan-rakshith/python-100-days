@@ -1,3 +1,4 @@
+# Python Program for termination of a Windows PC
 import os
 
 def shutdown_computer():
