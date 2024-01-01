@@ -1,0 +1,1 @@
+max_range = input("What is the max range?")
