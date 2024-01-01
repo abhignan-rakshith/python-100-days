@@ -1,2 +1,6 @@
 # python-100-days
-These are the mini coding projects (in python), as part of the 100-days coding challenge.
+These are the mini-coding projects (in Python), as part of the 100-day coding challenge.
+
+The files corresponding to each day are stored in their respective folders, numbered -> Day_1, Day_2 ... 
+
+
