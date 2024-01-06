@@ -58,5 +58,5 @@ if __name__ == "__main__":
             go_again = False
             os.system('cls')
             print("GoodBye!")
-            w = input("Hit 'enter to exit...'")
+            w = input("Hit 'enter' to exit...")
             
