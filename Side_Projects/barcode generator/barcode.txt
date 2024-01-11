@@ -1,0 +1,5 @@
+['BarcodeNotFoundError', 'BinaryIO', 'CODABAR', 'Code128', 'Code39', 'Dict', 'EAN13', 'EAN13_GUARD', 'EAN14', 'EAN8',
+'EAN8_GUARD', 'Gs1_128', 'ISBN10', 'ISBN13', 'ISSN', 'ITF', 'JAN', 'Optional', 'PROVIDED_BARCODES', 'PZN', 'UPCA',
+'Union', '__BARCODE_MAP', '__builtins__', '__cached__', '__doc__', '__file__', '__loader__', '__name__', '__package__',
+'__path__', '__spec__', 'base', 'charsets', 'codabar', 'codex', 'ean', 'errors', 'generate', 'get', 'get_barcode',
+'get_barcode_class', 'get_class', 'isxn', 'itf', 'os', 'upc', 'version', 'writer']
