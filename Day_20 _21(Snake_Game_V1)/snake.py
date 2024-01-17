@@ -11,10 +11,10 @@ RIGHT = 0
 
 class Snake:
     def __init__(self):
-        self.my_python = []
+        self.segments = []
         # Any kind of functionality is moved into a method
         self.create_snake()  # Happens only once
-        self.head = self.my_python[0]  # Creating the head of the snake
+        self.head = self.segments[0]  # Creating the head of the snake
 
     def create_snake(self):
         for cords in STARTING_POS:
@@ -25,17 +25,24 @@ class Snake:
         snake_body.penup()
         snake_body.color("dark olive green")
         snake_body.goto(position)
-        self.my_python.append(snake_body)
+        self.segments.append(snake_body)
+
+    def reset(self):
+        for seg in self.segments:
+            seg.goto(1000, 1000)
+        self.segments.clear()
+        self.create_snake()
+        self.head = self.segments[0]
 
     def extend(self):
         # adds a new segment to the snake
-        self.add_segment(position=self.my_python[-1].position())
+        self.add_segment(position=self.segments[-1].position())
 
     def move(self):
-        for seg in range(len(self.my_python) - 1, 0, -1):
-            new_x = self.my_python[seg - 1].xcor()
-            new_y = self.my_python[seg - 1].ycor()
-            self.my_python[seg].goto(new_x, new_y)
+        for seg in range(len(self.segments) - 1, 0, -1):
+            new_x = self.segments[seg - 1].xcor()
+            new_y = self.segments[seg - 1].ycor()
+            self.segments[seg].goto(new_x, new_y)
         self.head.forward(MOVE_DISTANCE)
 
     def up(self):
