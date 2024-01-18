@@ -1,31 +1,29 @@
-state,x,y
-Andhra Pradesh,-75.0,-199.0
-Arunachal Pradesh,255.0,118.0
-Assam,221.0,69.0
-Bihar,73.0,50.0
-Chhattisgarh,-21.0,-52.0
-Goa,-192.0,-194.0
-Gujarat,-263.0,-43.0
-Haryana,-146.0,148.0
-Himachal Pradesh,-90.0,210.0
-Jharkhand,65.0,7.0
-Karnataka,-150.0,-223.0
-Kerala,-141.0,-315.0
-Madhya Pradesh,-100.0,-11.0
-Maharashtra,-152.0,-110.0
-Manipur,272.0,27.0
-Meghalaya,200.0,45.0
-Mizoram,257.0,-23.0
-Nagaland,295.0,60.0
-Odisha,60.0,-71.0
-Punjab,-155.0,180.0
-Rajasthan,-200.0,77.0
-Sikkim,139.0,95.0
-Tamil Nadu,-95.0,-303.0
-Telangana,-75.0,-144.0
-Tripura,202.0,0.0
-Uttarakhand,-69.0,166.0
-Uttar Pradesh,-29.0,73.0
-West Bengal,120.0,-11.0
-
-
+state,x,y,capital
+Andhra Pradesh,-75,-199,Amaravati
+Arunachal Pradesh,255,118,Itanagar
+Assam,221,69,Dispur
+Bihar,73,50,Patna
+Chhattisgarh,-21,-52,Raipur
+Goa,-192,-194,Panaji
+Gujarat,-263,-43,Gandhinagar
+Haryana,-146,148,Chandigarh
+Himachal Pradesh,-90,210,Shimla
+Jharkhand,65,7,Ranchi
+Karnataka,-150,-223,Bangalore
+Kerala,-141,-315,Thiruvananthapuram
+Madhya Pradesh,-100,-11,Bhopal
+Maharashtra,-152,-110,Mumbai
+Manipur,272,27,Imphal
+Meghalaya,200,45,Shillong
+Mizoram,257,-23,Aizawl
+Nagaland,295,60,Kohima
+Odisha,60,-71,Bhubaneshwar
+Punjab,-155,180,Chandigarh
+Rajasthan,-200,77,Jaipur
+Sikkim,139,95,Gangtok
+Tamil Nadu,-95,-303,Chennai
+Telangana,-75,-144,Hyderabad
+Tripura,202,0,Agartala
+Uttarakhand,-69,166,Dehradun
+Uttar Pradesh,-29,73,Lucknow
+West Bengal,120,-11,Kolkata
