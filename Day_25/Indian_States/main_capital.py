@@ -58,5 +58,3 @@ states_to_learn_df.state.to_csv("states_to_learn.csv", index=False, header=False
 # Capitals to learn extracted into csv:
 capitals_to_learn_df = state_data[~state_data.capital.isin(capital_guesses)]
 capitals_to_learn_df.capital.to_csv("capitals_to_learn.csv", index=False, header=False)
-
-
