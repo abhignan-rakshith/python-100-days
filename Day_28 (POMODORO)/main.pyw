@@ -75,10 +75,10 @@ def count_down(count):
         timer = window.after(1000, count_down, count - 1)
     else:
         start_timer()
+        play_sound()
         if reps % 2 == 0:
             marks += "✔ "
             label_tick.config(text=marks)
-            play_sound()
 
 
 # ---------------------------- UI SETUP ------------------------------- #
