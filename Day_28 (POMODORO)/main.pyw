@@ -1,10 +1,11 @@
 import tkinter as tk
 import math
+import pygame
 
 # ---------------------------- CONSTANTS ------------------------------- #
 PINK = "#e2979c"
 RED = "#e7305b"
-GREEN = "#9bdeac"
+GREEN = "#7FE7CC"
 YELLOW = "#f7f5dd"
 FONT_NAME = "serif"
 WORK_MIN = 25
@@ -14,9 +15,17 @@ reps = 0
 marks = ""
 timer = None
 
+pygame.mixer.init()
+
+
+def play_sound():
+    pygame.mixer.music.load('alarm_file.wav')
+    pygame.mixer.music.play()
+
 
 # ---------------------------- TIMER RESET ------------------------------- #
 def reset_timer():
+    button_start.config(state="normal")
     global reps, marks
     reps = 0
     marks = ""
@@ -29,6 +38,7 @@ def reset_timer():
 # ---------------------------- TIMER MECHANISM ------------------------------- #
 
 def start_timer():
+    button_start.config(state="disabled")
     global reps
     reps += 1
     work_sec = WORK_MIN * 60
@@ -68,6 +78,7 @@ def count_down(count):
         if reps % 2 == 0:
             marks += "✔ "
             label_tick.config(text=marks)
+            play_sound()
 
 
 # ---------------------------- UI SETUP ------------------------------- #
@@ -96,9 +107,9 @@ button_start.config(bg=GREEN, highlightthickness=0)
 button_start.grid(row=2, column=0)
 
 # calls reset() when pressed
-button_start = tk.Button(text="Reset", command=reset_timer)
-button_start.config(bg=PINK, highlightthickness=0)
-button_start.grid(row=2, column=2)
+button_reset = tk.Button(text="Reset", command=reset_timer)
+button_reset.config(bg=PINK, highlightthickness=0)
+button_reset.grid(row=2, column=2)
 
 # ------------tick label------------
 label_tick = tk.Label()
