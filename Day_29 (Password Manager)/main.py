@@ -2,6 +2,7 @@ from tkinter import *
 from tkinter import messagebox
 from random import randint, choice, shuffle
 import pyperclip
+import json
 
 FONT_NAME = "serif"
 
@@ -28,12 +29,45 @@ def generate_password():
     pyperclip.copy(password)
 
 
+# ---------------------------- PASSWORD GENERATOR ------------------------------- #
+
+
+def find_password():
+    website = entry_website.get()
+    if len(website) != 0:
+        try:
+            with open(file="pass_bank.json", mode='r') as pass_file:
+                data = json.load(pass_file)
+        except FileNotFoundError:
+            messagebox.showerror(title='FileNotFoundError', message="No Data File Found.")
+        else:
+            try:
+                website_dict = data[website]
+            except KeyError:
+                messagebox.showerror(title='Website Not Found!', message="No details for the website exists.")
+            else:
+                messagebox.showinfo(title=website, message=f"Email: {website_dict['Email']} \n"
+                                                           f"Password: {website_dict['Password']} \n")
+                pyperclip.copy(website_dict['Password'])
+        finally:
+            entry_website.delete(0, END)
+            entry_website.focus()
+
+
 # ---------------------------- ADD PASSWORD ------------------------------- #
+
 
 def add_password():
     email = entry_email.get()
     website = entry_website.get()
     pass_gen = entry_password.get()
+
+    new_data = {
+        website: {
+            "Email": email,
+            "Password": pass_gen,
+        }
+    }
 
     if len(website) == 0 or len(pass_gen) == 0 or len(email) == 0:
         messagebox.showwarning(title="Oops", message="Please don't leave any fields empty!")
@@ -42,13 +76,21 @@ def add_password():
                                                               f"Email: {email} \n"
                                                               f"Password: {pass_gen} \n"
                                                               f"Is it ok to save?")
-
         if is_ok:
-            with open(file="pass_bank.txt", mode='a') as pass_file:
-                pass_file.write(f"{website} || {email} || {pass_gen}\n")
-            entry_website.delete(0, END)
-            entry_website.focus()
-            entry_password.delete(0, END)
+            try:
+                with open(file="pass_bank.json", mode='r') as pass_file:
+                    data = json.load(pass_file)
+            except FileNotFoundError:
+                with open(file="pass_bank.json", mode='w') as pass_file:
+                    json.dump(new_data, pass_file, indent=4)
+            else:
+                data.update(new_data)
+                with open(file="pass_bank.json", mode='w') as pass_file:
+                    json.dump(data, pass_file, indent=4)
+            finally:
+                entry_website.delete(0, END)
+                entry_website.focus()
+                entry_password.delete(0, END)
 
 
 # ---------------------------- UI SETUP ------------------------------- #
@@ -68,10 +110,16 @@ label_website = Label(text="Website:  ")
 label_website.config(font=(FONT_NAME, 15, "normal"), bg="gray10", fg="azure")
 label_website.grid(row=1, column=0)
 
-entry_website = Entry(width=35)
+entry_website = Entry(width=20)
 entry_website.focus()
 entry_website.config(bg="azure", fg="blue4", font=(FONT_NAME, 15, "bold"))
-entry_website.grid(row=1, column=1, columnspan=2)
+entry_website.grid(row=1, column=1, padx=(0, 10))
+
+# calls find_password() when pressed
+button_search = Button(text="Search")
+button_search.config(font=(FONT_NAME, 11, "bold"), bg="lemon chiffon", fg="gray10",
+                     command=find_password, padx=45)
+button_search.grid(row=1, column=2)
 
 # ------------Email/Username------------ #
 label_email = Label(text="Email/Username:  ")
