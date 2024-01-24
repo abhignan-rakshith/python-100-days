@@ -36,7 +36,7 @@ def find_password():
     website = entry_website.get()
     if len(website) != 0:
         try:
-            with open(file="pass_bank.json", mode='r') as pass_file:
+            with open(file="C:/Users/abhig/Documents/imp/pass_bank.json", mode='r') as pass_file:
                 data = json.load(pass_file)
         except FileNotFoundError:
             messagebox.showerror(title='FileNotFoundError', message="No Data File Found.")
@@ -78,14 +78,14 @@ def add_password():
                                                               f"Is it ok to save?")
         if is_ok:
             try:
-                with open(file="pass_bank.json", mode='r') as pass_file:
+                with open(file="C:/Users/abhig/Documents/imp/pass_bank.json", mode='r') as pass_file:
                     data = json.load(pass_file)
             except FileNotFoundError:
-                with open(file="pass_bank.json", mode='w') as pass_file:
+                with open(file="C:/Users/abhig/Documents/imp/pass_bank.json", mode='w') as pass_file:
                     json.dump(new_data, pass_file, indent=4)
             else:
                 data.update(new_data)
-                with open(file="pass_bank.json", mode='w') as pass_file:
+                with open(file="C:/Users/abhig/Documents/imp/pass_bank.json", mode='w') as pass_file:
                     json.dump(data, pass_file, indent=4)
             finally:
                 entry_website.delete(0, END)
