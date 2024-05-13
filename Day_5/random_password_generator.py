@@ -33,6 +33,7 @@ print(password)
 #e.g. 4 letter, 2 symbol, 2 number = g^2jk8&P
 
 list_password = [*password]
+print(list_password)
 
 random.shuffle(list_password)
 shuffled_password = ''

@@ -15,10 +15,11 @@ from random import choice
 import os
 from art import logo
 
+
 # return a random card from cards list
 def deal_card():
     """This function returns a random card from cards = [11, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10]"""
-    
+
     cards = [11, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10]
     return choice(cards)
 
@@ -29,7 +30,7 @@ def calculate_score(cards):
     if sum(cards) == 21:
         print("Black Jack")
         return 0
-    
+
     if sum(cards) > 21 and 11 in cards:
         cards.remove(11)
         cards.append(1)
@@ -53,11 +54,12 @@ def compare(user_score, computer_score):
     else:
         return "YOU LOSE :("
 
+
 def play_game():
     """Recursive Function"""
-    
+
     print(logo)
-    
+
     # Dealing the user and computer 2 cards each using deal_card() and append().
     user_cards = []
     computer_cards = []
@@ -71,15 +73,15 @@ def play_game():
         computer_score = calculate_score(computer_cards)
         print(f"   Your cards: {user_cards}, current score: {user_score}")
         print(f"   Computer's first card: {computer_cards[0]}")
-        
+
         if user_score == 0 or computer_score == 0 or user_score > 21:
-          game_on = False
-        else:
-          user_should_deal = input("Type 'y' to get another card, type 'n' to pass: ")
-          if user_should_deal == "y":
-            user_cards.append(deal_card())
-          else:
             game_on = False
+        else:
+            user_should_deal = input("Type 'y' to get another card, type 'n' to pass: ")
+            if user_should_deal == "y":
+                user_cards.append(deal_card())
+            else:
+                game_on = False
 
     while computer_score != 0 and computer_score < 17:
         computer_cards.append(deal_card())
@@ -89,6 +91,7 @@ def play_game():
     print(f"   Computer's final hand: {computer_cards}, final score: {computer_score}")
     print(compare(user_score, computer_score))
 
+
 while input("Do you want to play a game of Blackjack? Type 'y' or 'n': ") == "y":
-  os.system('cls')
-  play_game()
+    os.system('cls')
+    play_game()
